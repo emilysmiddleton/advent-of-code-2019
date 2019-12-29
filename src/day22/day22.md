@@ -235,8 +235,9 @@ We will simplify this as we go by applying `mod 10007`
 Now, to get the formula for 4 repeats:
 
 ```
-1875^2x + 771*1876 =>
-3515625x + 1446396 =>
+1875^2x + 771*1876 mod 10007=>
+3515625x + 1446396 mod 10007 =>
+3168x + 5388
 ```
 
 If we keep doubling like this we can more efficiently calculate the large number of repeats required.
@@ -266,25 +267,22 @@ So after 10 repeats of the shuffles, card 2019 will be at
 
 ### Reversing the shuffle
 
-After simplifying our 100 shuffles to a single formula, then repeating 101,741,582,076,661 times, now have a simple, 
-efficient formula that will tell us where a particular card will end up 
-after a large number of repeats of our 100 shuffles.
+After simplifying our 100 shuffles to a single formula, then repeating a large number of times, we now have a simple, 
+efficient formula that will tell us where a particular card will end up.
 
 The second problem is that part 2 doesn't ask us where a particular card ends up; it asks us what card
-ends up in position 2020.
+finishes in position 2020.
 
-Going back to part 1 (because the numbers are easier), if instead we'd been asked for the card ad position 3293,
+Going back to part 1 (because the numbers are easier), if instead we'd been asked for the card at position 3293,
 we'd be looking for `x` where
 
 `3103x + 2718 mod 100007 = 3293`
 
-We know that `x=2019`, but how do we calculate that?
+We already know that `x=2019`, but if we didn't, how could we calculate that?
 
 #### Modular inverses
 
-How do you reverse `3x mod 13`?
-
-The modular inverse of `3 mod 13` is `9`.
+How do you reverse `3 * x mod 13`? In this case by multiplying by 9, the _modular inverse_.
 
 e.g. 
 ```
@@ -336,8 +334,11 @@ To calculate the modular inverse we'll need some extra calculations:
 - x, starts at 1
 - y, starts at 0
 
-Each round x becomes the previous value of y, and y is calculated as:
-`y = previous value of x - (quotient * x)`
+Each round 
+- x becomes the previous value of y
+- y is calculated as `y = previous value of x - (quotient * x)`
+
+For `3 mod 13`:
 
 |i|Value |Divisor |Quotient |Remainder |x   |y   |
 |:--------|:-----|:-------|:--------|:---------|:---|:---|
