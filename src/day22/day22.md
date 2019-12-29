@@ -55,22 +55,21 @@ For a deck of size `m`, let's consider the effect of each of these on a given ca
 
 #### Deal into new stack
 
-Consider a deck of 5 cards, reversed:
+For a deck of 5 cards:
 
 `[0, 1, 2, 3, 4]`
 becomes<br/>
 `[4, 3, 2, 1, 0]`
 
-This is essentially a reverse operation, `m + 1 - x`.
-If we give the result `mod m`, we don't need to add `m`, it will be normalised for us.
+This is essentially a reverse operation, `m + 1 - x`. If we give the result `mod m`, we don't need to add `m`, it will be normalised for us.
 
-**The card at position `x` will end up at position `1 - x`**
+**The card at position `x` will end up at position `(1 - x) mod m`**
 
 #### Cut N cards
 
 This takes the first `n` cards and puts them at the end of the deck.
 
-Consider a deck of 5 cards, cut 2:
+For a deck of 5 cards, cut 2:
 
 `[0, 1, 2, 3, 4]`
 becomes<br/>
@@ -98,10 +97,9 @@ if (x < n)
 minus n
 ```
 
-But if we give the result `mod m`, we don't need to add `m`, it will be normalised for us.
+If we give the result `mod m`, we don't need to add `m`, it will be normalised for us.
 
-So we can simplify this: 
-**the card at position `x` will end up at position `(x - n) mod m`**
+**The card at position `x` will end up at position `(x - n) mod m`**
 
 #### Deal with increment N
 
@@ -127,6 +125,10 @@ We can then apply `mod 5` to wrap around:
 - 2 -> 4 mod 5 -> 4
 - 3 -> 6 mod 5 -> 1
 - 4 -> 8 mod 5 -> 3
+
+`[0, 1, 2, 3, 4]`
+becomes<br/>
+`[0, 3, 1, 4, 2]`
 
 **the card at position `x` will end up at position `(x * n) mod m`**
 
@@ -209,15 +211,35 @@ This was the same answer we got for part 1.
 Now we've got a single formula rather than 100, but that's still not going to be efficient 
 enough to repeat it as many times as we need to.
 
-To apply `3103x - 2718 mod 10007` twice, we have
+To apply a formula `ax + b` twice, we have
 
 ```
-(3103x + 2718) * 3103 + 2718 mod 10007 =>
-(9628609x + 8741151 + 2718) mod 10007 =>
-1875x + 996 mod 10007
+(ax + b) * a + b =>
+a^2x + b(a + 1)
 ```
 
-A quick way to get to a large number of repeats is to keep doubling:
+For our part one example the formula is `a=3103`, `b=2718`.
+So two repeats is:
+
+```
+3103^2x + 2718*3104 =>
+9628609x + 8436672
+```
+
+We will simplify this as we go by applying `mod 10007`
+
+```
+1875x + 771
+```
+
+Now, to get the formula for 4 repeats:
+
+```
+1875^2x + 771*1876 =>
+3515625x + 1446396 =>
+```
+
+If we keep doubling like this we can more efficiently calculate the large number of repeats required.
 
 |Repeats|Formula|
 |:------|:------|
