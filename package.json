@@ -1,0 +1,31 @@
+{
+  "name": "advent-of-code-2019",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "transpile": "npx tsc -p .",
+    "build": "npm run transpile",
+    "test": "npm run build && ava --verbose test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emilysmiddleton/advent-of-code-2019.git"
+  },
+  "author": "Emily Middleton",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emilysmiddleton/advent-of-code-2019/issues"
+  },
+  "homepage": "https://github.com/emilysmiddleton/advent-of-code-2019#readme",
+  "devDependencies": {
+    "@types/bunyan": "^1.8.4",
+    "@types/node": "^8.10.38",
+    "ava": "^0.25.0",
+    "typescript": "^2.8.1"
+  },
+  "dependencies": {
+    "bignumber.js": "^9.0.0",
+    "bunyan": "^1.8.12"
+  }
+}
