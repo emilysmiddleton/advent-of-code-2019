@@ -17,3 +17,10 @@ In TypeScript we use `Number.parseInt`
 One straightforward calculation for each input line. 
 
 In TypeScript `Math.floor` can be used to round down.
+
+## Puzzle answer
+
+To get the answer we'll add up the results of the fuel required application.
+
+In TypeScript we can use `Array.map` to apply the calculation for each input,
+and then `Array.reduce` to sum them.
