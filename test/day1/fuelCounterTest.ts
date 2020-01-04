@@ -10,9 +10,9 @@ test('fuel required for mass 14', t => {
 });
 
 test('fuel required for mass 1969', t => {
-    t.is(654, fuelRequired(12));
+    t.is(654, fuelRequired(1969));
 });
 
 test('fuel required for mass 100756', t => {
-    t.is(33583, fuelRequired(12));
+    t.is(33583, fuelRequired(100756));
 });

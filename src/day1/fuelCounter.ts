@@ -1,3 +1,3 @@
 export function fuelRequired(mass: number): number {
-    return mass;
+    return Math.floor(mass / 3) - 2;
 }
