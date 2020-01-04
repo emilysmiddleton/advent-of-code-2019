@@ -4,8 +4,10 @@
   "description": "",
   "main": "main.js",
   "scripts": {
+    "lint": "./node_modules/.bin/tslint -p tsconfig.json",
+    "lint:fix": "./node_modules/.bin/tslint --fix -p tsconfig.json",
     "transpile": "npx tsc -p .",
-    "build": "npm run transpile",
+    "build": "npm run lint && npm run transpile",
     "test": "npm run build && ava --verbose test"
   },
   "repository": {
@@ -26,6 +28,8 @@
   },
   "dependencies": {
     "bignumber.js": "^9.0.0",
-    "bunyan": "^1.8.12"
+    "bunyan": "^1.8.12",
+    "tslint": "^5.20.1",
+    "tslint-eslint-rules": "^5.4.0"
   }
 }
