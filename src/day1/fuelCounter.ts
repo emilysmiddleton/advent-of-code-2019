@@ -1,3 +1,4 @@
 export function fuelRequired(mass: number): number {
-    return Math.floor(mass / 3) - 2;
+    const result =  Math.floor(mass / 3) - 2;
+    return result < 0 ? 0 : result;
 }

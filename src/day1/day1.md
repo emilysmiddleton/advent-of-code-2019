@@ -9,7 +9,9 @@ from a string to a number.
 
 In TypeScript we use `Number.parseInt`
 
-## Fuel required
+## Part 1
+
+### Fuel required
 
 > Fuel required to launch a given module is based on its mass. 
 > Specifically, to find the fuel required for a module, take its mass, divide by three, round down, and subtract 2.
@@ -18,9 +20,18 @@ One straightforward calculation for each input line.
 
 In TypeScript `Math.floor` can be used to round down.
 
-## Puzzle answer
+### Puzzle answer
 
 To get the answer we'll add up the results of the fuel required application.
 
 In TypeScript we can use `Array.map` to apply the calculation for each input,
 and then `Array.reduce` to sum them.
+
+## Part 2
+
+### Negative fuel
+
+> Any mass that would require negative fuel should instead be treated as if it requires zero fuel
+
+We can reuse our fuel calculator from part 1, but need to ensure it will return 0 
+instead of a negative value.
