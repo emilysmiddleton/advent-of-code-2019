@@ -8,7 +8,7 @@
     "lint:fix": "./node_modules/.bin/tslint --fix -p tsconfig.json",
     "transpile": "npx tsc -p .",
     "build": "npm run lint && npm run transpile",
-    "test": "npm run build && ava --verbose test"
+    "test": "npm run build && npx ava --verbose"
   },
   "repository": {
     "type": "git",
@@ -23,8 +23,8 @@
   "devDependencies": {
     "@types/bunyan": "^1.8.4",
     "@types/node": "^8.10.38",
-    "ava": "^0.25.0",
-    "typescript": "^2.8.1"
+    "ava": "^2.4.0",
+    "typescript": "^3.4.5"
   },
   "dependencies": {
     "bignumber.js": "^9.0.0",
