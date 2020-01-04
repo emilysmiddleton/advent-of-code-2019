@@ -1,5 +1,5 @@
 import * as Logger from 'bunyan';
-import { fuelRequired } from './fuelCounter';
+import { fuelRequired, totalFuel } from './fuelCounter';
 import { sum } from '../utils';
 
 export function parse(rawInputs: string[], _log: Logger): number[] {
@@ -11,8 +11,7 @@ export function run1(input: number[], _log: Logger): number {
 }
 
 export function run2(input: number[], _log: Logger): number {
-    return input[0];
-
+    return input.map(totalFuel).reduce(sum);
 }
 
 
