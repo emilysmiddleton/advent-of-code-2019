@@ -1,6 +1,6 @@
 # Day 1
 
-See [part 1](problem-part-1.md), or [the original online](https://adventofcode.com/2019/day/1/).
+See [part 1](problem.md), or [the original online](https://adventofcode.com/2019/day/1/).
 
 ## Parsing the input
 
