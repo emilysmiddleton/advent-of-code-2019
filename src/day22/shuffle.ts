@@ -32,13 +32,13 @@ export function compoundShuffle(current: SimplifiedShuffle, shuffle: Shuffle): S
             return {
                 add: current.add.times(shuffle.param),
                 multiply: current.multiply.times(shuffle.param)
-            }
+            };
         }
         case 'DNS': {
             return {
                 add: current.add.times(-1).minus(1),
                 multiply: current.multiply.times(-1)
-            }
+            };
         }
         default:
             throw new Error('Unknown operation ' + shuffle.op);
@@ -97,5 +97,5 @@ export function combine(size: BigNumber, shuffle1: SimplifiedShuffle, shuffle2: 
     return {
         multiply: normalise(size, new BigNumber(shuffle1.multiply).times(new BigNumber(shuffle2.multiply))),
         add: normalise(size, new BigNumber(shuffle1.add).times(new BigNumber(shuffle2.multiply)).plus(new BigNumber(shuffle2.add)))
-    }
+    };
 }

@@ -17,7 +17,7 @@ test('Deal into new stack is times -1 then minus 1', t => {
     t.deepEqual(compoundShuffle(begin, shuffle), {
         add: new BigNumber(-11),
         multiply: new BigNumber(-5)
-    })
+    });
 });
 
 test('Deal with increment multiplies', t => {
@@ -32,7 +32,7 @@ test('Deal with increment multiplies', t => {
     t.deepEqual(compoundShuffle(begin, shuffle), {
         add: new BigNumber(70),
         multiply: new BigNumber(35)
-    })
+    });
 });
 
 test('Cut takes off add', t => {
@@ -47,7 +47,7 @@ test('Cut takes off add', t => {
     t.deepEqual(compoundShuffle(begin, shuffle), {
         add: new BigNumber(3),
         multiply: new BigNumber(5)
-    })
+    });
 });
 
 test('Modula inverse', t => {
