@@ -1,5 +1,5 @@
 import test from 'ava';
-import { findIntersections, getPath, indexOf, manhattenDistance, next } from '../../src/day3/utilities';
+import { findIntersections, getPath, indexOf, manhattenDistance, next } from '../../src/day3/coordinates';
 
 test('Manhatten distance lhs smaller', t => {
     t.is(manhattenDistance({ x: 2, y: 6 }, { x: 6, y: 12 }), 10);

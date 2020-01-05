@@ -1,5 +1,5 @@
 import * as Logger from 'bunyan';
-import { findIntersections, getFullPath, indexOf, manhattenDistance } from './utilities';
+import { findIntersections, getFullPath, indexOf, manhattenDistance } from './coordinates';
 import { parseOperations } from './parser';
 import { min } from '../utils';
 
