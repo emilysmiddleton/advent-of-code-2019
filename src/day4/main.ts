@@ -1,5 +1,6 @@
 import * as Logger from 'bunyan';
 import { Range } from './types';
+import { validPassword } from './password';
 
 export function parse(rawInputs: string[], _log: Logger): Range {
     const parts = rawInputs[0].split('-');
@@ -10,7 +11,13 @@ export function parse(rawInputs: string[], _log: Logger): Range {
 }
 
 export function run1(input: Range, _log: Logger): number {
-    return input.from;
+    let count = 0;
+    for (let i = input.from; i < input.to; i++) {
+        if (validPassword(i)) {
+            count++;
+        }
+    }
+    return count;
 }
 
 export function run2(input: Range, _log: Logger): number {
