@@ -1,5 +1,6 @@
 import test from 'ava';
 import { addObject, addOrbit, parseGraph } from '../../src/day6/parser';
+import { SpaceObject } from '../../src/day6/types';
 
 test('Creates object where key not exist', t => {
     const graph = new Map();
@@ -7,6 +8,7 @@ test('Creates object where key not exist', t => {
     t.true(graph.has('A'));
     const object = graph.get('A');
     t.is(object.name, 'A');
+    t.is(object.orbits.length, 0);
     t.is(object.orbitedBy.length, 0);
 });
 
@@ -26,12 +28,15 @@ test('addOrbit adds relationships', t => {
     t.true(graph.has('B'), JSON.stringify(graph));
     const a = graph.get('A');
     const b = graph.get('B');
-    t.is(a.orbitedBy.length, 1);
-    // Should be the exact same object.
-    t.is(a.orbitedBy[0], b);
+
+    t.deepEqual(a.orbits.map(toName), []);
+    t.deepEqual(a.orbitedBy.map(toName), ['B']);
+
+    t.deepEqual(b.orbits.map(toName), ['A']);
+    t.deepEqual(b.orbitedBy.map(toName), []);
 });
 
-test('parse adds all relationships', t => {
+test.only('parse adds all relationships', t => {
     const graph = parseGraph([
         'A)B',
         'B)C',
@@ -41,7 +46,18 @@ test('parse adds all relationships', t => {
     const b = graph.get('B');
     const c = graph.get('C');
     const d = graph.get('D');
-    t.is(a.orbitedBy[0], b);
-    t.is(b.orbitedBy[0], c);
-    t.is(b.orbitedBy[1], d);
+
+    t.deepEqual(a.orbits.map(toName), []);
+    t.deepEqual(a.orbitedBy.map(toName), ['B']);
+
+    t.deepEqual(b.orbits.map(toName), ['A']);
+    t.deepEqual(b.orbitedBy.map(toName), ['C', 'D']);
+
+    t.deepEqual(c.orbits.map(toName), ['B']);
+    t.deepEqual(c.orbitedBy.map(toName), []);
+
+    t.deepEqual(d.orbits.map(toName), ['B']);
+    t.deepEqual(d.orbitedBy.map(toName), []);
 });
+
+const toName = (object: SpaceObject) => object.name;

@@ -1,5 +1,6 @@
 export type SpaceObject = {
     name: string,
+    orbits: SpaceObject[],
     orbitedBy: SpaceObject[]
 };
 
