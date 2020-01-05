@@ -1,6 +1,6 @@
 # Day 4
 
-See [part 1](problem.md), or [the original online](https://adventofcode.com/2019/day/4/).
+See [part 1 and 2](problem.md), or [the original online](https://adventofcode.com/2019/day/4/).
 
 ## Parsing the input
 
@@ -14,6 +14,8 @@ I've chosen to define a range type.
     to: number
 }
 ```
+
+## Part 1
 
 ### Approach
 
@@ -49,3 +51,14 @@ for each pair of adjacent digits
 if !adjacentSame
     doesn't meet criteria
 ```
+
+## Part 2
+
+There is a new rule:
+
+> the two adjacent matching digits are not part of a larger group of matching digits.
+
+This means that a number only satisfies the "two digits" repeated criteria if it is repeated exactly twice.
+
+Our existing check checked that two adjacent digits - `[i]` and `[i + 1]` - are the same. 
+We'll need to tweak this to also check that `[i - 1]` and `[i + 2]` are different.
