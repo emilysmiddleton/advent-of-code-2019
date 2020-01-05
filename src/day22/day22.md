@@ -61,9 +61,9 @@ For a deck of 5 cards:
 becomes<br/>
 `[4, 3, 2, 1, 0]`
 
-This is essentially a reverse operation, `m + 1 - x`. If we give the result `mod m`, we don't need to add `m`, it will be normalised for us.
+This is essentially a reverse operation, `m - 1 - x`. If we give the result `mod m`, we don't need to add `m`, it will be normalised for us.
 
-**The card at position `x` will end up at position `(1 - x) mod m`**
+**The card at position `x` will end up at position `(-1 - x) mod m`**
 
 #### Cut N cards
 
@@ -142,7 +142,7 @@ The formula to apply to get it to its new position, for each operation, is:
 
 | Operation | Formula |
 |:----------|:--------|
-|Deal into new stack | (1 - x) mod m |
+|Deal into new stack | (-1 - x) mod m |
 |Cut N cards | (x - n) mod m |
 |Deal with increment N | (x * n) mod m |
 
