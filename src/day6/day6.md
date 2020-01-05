@@ -19,12 +19,12 @@ In our own solar system, we could have e.g.
 ```
 {
     name: 'sun',
-    orbits: []
+    orbits: SpaceObject
 }
 
 {
     name: 'mercury',
-    orbits: [ <sun> ]
+    orbits: <sun>
 ]
 
 etc

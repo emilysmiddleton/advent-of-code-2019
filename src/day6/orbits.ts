@@ -4,8 +4,8 @@ import { SpaceObject } from './types';
 export function pathToRoot(object: SpaceObject): SpaceObject[] {
     const path = [];
     let current = object;
-    while (current.orbits.length > 0) {
-        current = current.orbits[0];
+    while (current.orbits) {
+        current = current.orbits;
         path.push(current);
     }
     return path;

@@ -44,8 +44,8 @@ test.only('parse adds all relationships', t => {
     const c = graph.get('C');
     const d = graph.get('D');
 
-    t.deepEqual(a.orbits.map(toName), []);
-    t.deepEqual(b.orbits.map(toName), ['A']);
-    t.deepEqual(c.orbits.map(toName), ['B']);
-    t.deepEqual(d.orbits.map(toName), ['B']);
+    t.deepEqual(a.orbits, null);
+    t.deepEqual(b.orbits.name, 'A');
+    t.deepEqual(c.orbits.name, 'B');
+    t.deepEqual(d.orbits.name, 'B');
 });
