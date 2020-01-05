@@ -1,5 +1,12 @@
 # advent-of-code-2019
 
+[Advent of code](https://adventofcode.com/) is fun daily coding challenge that takes part in December
+of each year.
+
+This repository contains my solutions to the 2019 challenge. I've tried to write up an explanation for each one, as below.
+
+## Solutions
+
 * [Day 1](src/day1/day1.md)
 * [Day 3](src/day3/day3.md)
 * [Day 4](src/day4/day4.md)
