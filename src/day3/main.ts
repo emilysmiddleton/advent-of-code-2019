@@ -1,5 +1,5 @@
 import * as Logger from 'bunyan';
-import { findIntersections, getFullPath, manhattenDistance } from './utilities';
+import { findIntersections, getFullPath, indexOf, manhattenDistance } from './utilities';
 import { parseOperations } from './parser';
 import { min } from '../utils';
 
@@ -21,11 +21,9 @@ export function run2(paths: PathOperation[][], _log: Logger): number {
     const path1 = getFullPath(start, paths[0]);
     const path2 = getFullPath(start, paths[1]);
     const intersections = findIntersections(path1, path2);
-    const smallest = intersections.reduce((prev, current, _index, _all) => {
-        const s1 = prev.steps;
-        const s2 = current.steps;
-        return s1 < s2 ? prev : current;
+    const steps = intersections.map(c => {
+        return indexOf(path1, c) + indexOf(path2, c) + 2;
     });
-    return smallest.steps;
+    return steps.reduce(min);
 }
 

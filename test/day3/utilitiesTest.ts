@@ -1,5 +1,5 @@
 import test from 'ava';
-import { findIntersections, getPath, manhattenDistance, next } from '../../src/day3/utilities';
+import { findIntersections, getPath, indexOf, manhattenDistance, next } from '../../src/day3/utilities';
 
 test('Manhatten distance lhs smaller', t => {
     t.is(manhattenDistance({ x: 2, y: 6, steps: 0 }, { x: 6, y: 12, steps: 0 }), 10);
@@ -60,4 +60,17 @@ test('Intersections', t => {
         { x: 4, y: 2, steps: 0 },
         { x: 5, y: 1, steps: 0 }
     ], JSON.stringify(result));
+});
+
+test('index of for a coordinate object', t => {
+    const coords = [
+        { x: 2, y: 3, steps: 0 },
+        { x: 4, y: 2, steps: 0 },
+        { x: 5, y: 1, steps: 0 },
+        { x: 2, y: 4, steps: 0 }
+    ];
+    t.is(0, indexOf(coords, { x: 2, y: 3, steps: 0 }));
+    t.is(1, indexOf(coords, { x: 4, y: 2, steps: 0 }));
+    t.is(2, indexOf(coords, { x: 5, y: 1, steps: 0 }));
+    t.is(3, indexOf(coords, { x: 2, y: 4, steps: 0 }));
 });

@@ -44,6 +44,10 @@ export function findIntersections(coords1: Coordinate[], coords2: Coordinate[]):
     });
 }
 
+export function indexOf(coords: Coordinate[], coord: Coordinate): number {
+    return coords.findIndex(c => c.x === coord.x && c.y === coord.y);
+}
+
 export function format(coord: Coordinate): string {
     return coord.x + ',' + coord.y;
 }
