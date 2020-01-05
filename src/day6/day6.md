@@ -43,4 +43,30 @@ We'll build up a map of space objects by name. For each line:
 - If the named objects aren't already in the map, create them (with an empty array initially)
 - Add the right-hand object (`C`) to the array of the left-hand object.
 
+## Part 1
+
+> What is the total number of direct and indirect orbits in your map data
+
+For each space object, it's total number of orbits (direct and indirect) is the
+length of the path from it to the COM station.
+
+So for a simple graph:
+```
+COM - A - B
+      |
+      \ - C - D
+```
+
+| Object | Path | Length |
+|:-------|:-----|:-------|
+| COM |  | 0 |
+| A | COM | 1 |
+| B | A - COM | 2 |
+| C | A - COM | 2 |
+| D | C - A - COM | 3 |
+
+Total 8.
+
+ 
+
 
