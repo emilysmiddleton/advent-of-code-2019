@@ -10,7 +10,6 @@ export function addOrbit(graph: Map<string, SpaceObject>, line: string): void {
     const parts = line.split(')');
     const lhs = addObject(graph, parts[0]);
     const rhs = addObject(graph, parts[1]);
-    lhs.orbitedBy.push(rhs);
     rhs.orbits.push(lhs);
 }
 
@@ -18,8 +17,7 @@ export function addObject(graph: Map<string, SpaceObject>, name: string): SpaceO
     if (!graph.has(name)) {
         graph.set(name, {
             name,
-            orbits: [],
-            orbitedBy: []
+            orbits: []
         });
     }
     return graph.get(name);

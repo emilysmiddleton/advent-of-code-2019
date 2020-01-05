@@ -1,7 +1,6 @@
 export type SpaceObject = {
     name: string,
-    orbits: SpaceObject[],
-    orbitedBy: SpaceObject[]
+    orbits: SpaceObject[]
 };
 
 export type OrbitGraph = Map<string, SpaceObject>;

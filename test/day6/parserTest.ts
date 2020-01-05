@@ -9,12 +9,11 @@ test('Creates object where key not exist', t => {
     const object = graph.get('A');
     t.is(object.name, 'A');
     t.is(object.orbits.length, 0);
-    t.is(object.orbitedBy.length, 0);
 });
 
 test('Add object no affect when already there', t => {
     const graph = new Map();
-    const a1 = { name: 'A', orbitedBy: [] };
+    const a1 = { name: 'A' };
     graph.set('A', a1);
     const a2 = addObject(graph, 'A');
     // Should be the exact same object.
@@ -30,10 +29,8 @@ test('addOrbit adds relationships', t => {
     const b = graph.get('B');
 
     t.deepEqual(a.orbits.map(toName), []);
-    t.deepEqual(a.orbitedBy.map(toName), ['B']);
 
     t.deepEqual(b.orbits.map(toName), ['A']);
-    t.deepEqual(b.orbitedBy.map(toName), []);
 });
 
 test.only('parse adds all relationships', t => {
@@ -48,14 +45,7 @@ test.only('parse adds all relationships', t => {
     const d = graph.get('D');
 
     t.deepEqual(a.orbits.map(toName), []);
-    t.deepEqual(a.orbitedBy.map(toName), ['B']);
-
     t.deepEqual(b.orbits.map(toName), ['A']);
-    t.deepEqual(b.orbitedBy.map(toName), ['C', 'D']);
-
     t.deepEqual(c.orbits.map(toName), ['B']);
-    t.deepEqual(c.orbitedBy.map(toName), []);
-
     t.deepEqual(d.orbits.map(toName), ['B']);
-    t.deepEqual(d.orbitedBy.map(toName), []);
 });
