@@ -67,6 +67,58 @@ COM - A - B
 
 Total 8.
 
- 
+## Part 2
+
+>What is the minimum number of orbital transfers required to move from the object
+> YOU are orbiting to the object SAN is orbiting? 
+
+### Minimal Orbital transfers
+
+We are looking for the "minimal orbital transfers", i.e. the shortest route from us to Santa.
+
+To find this, we look for the first point in common in our route back to COM.
+
+```
+                          YOU
+                         /
+        G - H       J - K - L
+       /           /
+COM - B - C - D - E - F
+               \
+                I - SAN
+```
+
+Path from K to COM is
+
+```
+K - J - E - D - C - B - COM
+```
+
+Path from I to COM is
+
+```
+I - D - C - B - COM
+```
+
+So the first point in common is `D`.
+
+- The number of steps to get from K to D is 3
+- The number of steps to get from I to D is 1
+
+So the minimum number of steps from K to is is:
+
+- 3 steps from K to D
+- 1 step from D to I
+
+Total 4.
+
+### Implementation
 
 
+In part 1 we wrote method that calculates the path from us to the root (COM).
+
+We can reuse this to find:
+- the path from the object we orbit (K) to COM
+- the path from the object SAN orbits (I) to COM
+
+Then find the first common point and add up the lengths.

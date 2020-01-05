@@ -1,6 +1,6 @@
 import test from 'ava';
 import { addObject, addOrbit, parseGraph } from '../../src/day6/parser';
-import { SpaceObject } from '../../src/day6/types';
+import { toName } from '../../src/day6/orbits';
 
 test('Creates object where key not exist', t => {
     const graph = new Map();
@@ -59,5 +59,3 @@ test.only('parse adds all relationships', t => {
     t.deepEqual(d.orbits.map(toName), ['B']);
     t.deepEqual(d.orbitedBy.map(toName), []);
 });
-
-const toName = (object: SpaceObject) => object.name;
