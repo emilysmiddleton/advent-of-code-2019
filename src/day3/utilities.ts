@@ -4,11 +4,11 @@ export function manhattenDistance(coord1: Coordinate, coord2: Coordinate): numbe
 
 export function next(coord: Coordinate, direction: string): Coordinate {
     switch (direction) {
-        case 'U': return { x: coord.x, y: coord.y + 1, steps: coord.steps + 1 };
-        case 'D': return { x: coord.x, y: coord.y - 1, steps: coord.steps + 1 };
-        case 'L': return { x: coord.x - 1, y: coord.y, steps: coord.steps + 1 };
-        case 'R': return { x: coord.x + 1, y: coord.y, steps: coord.steps + 1 };
-        default: throw new Error('Unkown direction ' + direction);
+        case 'U': return { x: coord.x, y: coord.y + 1 };
+        case 'D': return { x: coord.x, y: coord.y - 1 };
+        case 'L': return { x: coord.x - 1, y: coord.y };
+        case 'R': return { x: coord.x + 1, y: coord.y };
+        default: throw new Error('Unknown direction ' + direction);
     }
 }
 
@@ -34,14 +34,7 @@ export function getFullPath(start: Coordinate, operations: PathOperation[]): Coo
 }
 
 export function findIntersections(coords1: Coordinate[], coords2: Coordinate[]): Coordinate[] {
-    const coords2Strings = coords2.map(format);
-    const intersections = coords1.filter((value, _index, _all) => {
-        return coords2Strings.indexOf(format(value)) >= 0;
-    });
-    return intersections.map(coord => {
-        const coord2 = coords2[coords2Strings.indexOf(format(coord))];
-        return { x: coord.x, y: coord.y, steps: coord.steps + coord2.steps };
-    });
+    return coords1.filter(value => indexOf(coords2, value) >= 0);
 }
 
 export function indexOf(coords: Coordinate[], coord: Coordinate): number {

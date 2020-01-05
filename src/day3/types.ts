@@ -1,7 +1,6 @@
 type Coordinate = {
     x: number,
-    y: number,
-    steps: number
+    y: number
 };
 
 type PathOperation = {
