@@ -1,6 +1,6 @@
 import test from 'ava';
 import { parseGraph } from '../../src/day6/parser';
-import { pathLength } from '../../src/day6/main';
+import { pathLength } from '../../src/day6/orbits';
 
 test('Path length', t => {
     const graph = parseGraph([
