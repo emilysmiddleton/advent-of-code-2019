@@ -45,3 +45,7 @@ For the given example `123456789120`:
 For each layer, we can use `filter` to find the '0's then count them.
 
 We can then use our existing `min` function to find the fewest 0s.
+
+> On that layer, what is the number of 1 digits multiplied by the number of 2 digits?
+
+Count the number of 1 and 2 digits using the same method as we counted the 0 digits, then multiply.
