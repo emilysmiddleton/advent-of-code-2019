@@ -38,4 +38,10 @@ For the given example `123456789120`:
     - Convert to `[1, 2, 3]` and `[4, 5, 6]`
 - Same for layer `789120`
 
+## Part 1
 
+> the Elves would like you to find the layer that contains the fewest 0 digits
+
+For each layer, we can use `filter` to find the '0's then count them.
+
+We can then use our existing `min` function to find the fewest 0s.
