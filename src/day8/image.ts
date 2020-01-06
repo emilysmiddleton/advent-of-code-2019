@@ -12,6 +12,10 @@ export function countInstanceOf(layer: Layer, target: number): number {
     return numberPerRow.reduce(sum);
 }
 
+export function combineLayers(image: Image): Layer {
+    return image.layers.reduce((a, b) => combineLayer(a, b));
+}
+
 export function combineLayer(layer1: Layer, layer2: Layer): Layer {
     return {
         grid: zipReduce(layer1.grid, layer2.grid, combineRow)
@@ -21,3 +25,8 @@ export function combineLayer(layer1: Layer, layer2: Layer): Layer {
 export const combineRow = (r1, r2) => zipReduce(r1, r2, getColour);
 
 export const getColour = (p1, p2) => p1 === 2 ? p2 : p1;
+
+export function renderLayer(layer: Layer): string {
+    const rows = layer.grid.map(row => row.map(d => d === 1 ? '*' : ' ').reduce(sum) + '\n');
+    return rows.reduce(sum);
+}

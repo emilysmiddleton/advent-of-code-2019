@@ -76,3 +76,15 @@ Now we can define three functions:
 - Combine two points (return the first colour unless it is transparent)
 - Combine two rows (zip using the above as the reduce function)
 - Combine two layers (zip using the above as the reduce function)
+
+### Combining all layers
+
+Combining all layers is now a case of combining the first two, then combining the result of that with the
+third, and so on.
+
+### Puzzle answer
+
+We'll render an ascii art representation of the resulting layer,
+using asterisks for black and spaces for white.
+
+(It would be nice to have the code translate the ASCII art to give a string answer, but I'm not going to bother!)
