@@ -27,6 +27,6 @@ export const combineRow = (r1, r2) => zipReduce(r1, r2, getColour);
 export const getColour = (p1, p2) => p1 === 2 ? p2 : p1;
 
 export function renderLayer(layer: Layer): string {
-    const rows = layer.grid.map(row => row.map(d => d === 1 ? '*' : ' ').reduce(sum) + '\n');
+    const rows = layer.grid.map(row => row.map(d => d === 1 ? '0' : ' ').reduce(sum) + '\n');
     return rows.reduce(sum);
 }

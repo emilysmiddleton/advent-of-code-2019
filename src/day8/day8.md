@@ -85,6 +85,18 @@ third, and so on.
 ### Puzzle answer
 
 We'll render an ascii art representation of the resulting layer,
-using asterisks for black and spaces for white.
+using 0 for black and spaces for white.
 
-(It would be nice to have the code translate the ASCII art to give a string answer, but I'm not going to bother!)
+(It makes me a bit sad that the code doesn't 'produce' the answer, but we have to eyeball it.
+I suppose we could work out the letter patterns and write the code to read the ascii art... but I won't)
+
+For my input I get the following
+```
+0    0000   00 0  0  00  
+0    0       0 0 0  0  0 
+0    000     0 00   0    
+0    0       0 0 0  0    
+0    0    0  0 0 0  0  0 
+0000 0000  00  0  0  00  
+
+```

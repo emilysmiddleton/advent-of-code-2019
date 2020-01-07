@@ -14,9 +14,7 @@
     "no-conditional-assignment": true,
     "no-constant-condition": true,
     "no-console": [
-      true,
-      "log",
-      "error"
+      false
     ],
     "no-control-regex": true,
     "no-debugger": true,
