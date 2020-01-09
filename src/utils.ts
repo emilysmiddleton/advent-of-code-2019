@@ -18,7 +18,6 @@ export function greatestCommonDivisor(a: number, b: number): number {
     let divisor = Math.min(Math.abs(a), Math.abs(b));
     let dividend = Math.max(Math.abs(a), Math.abs(b));
     while (divisor > 0) {
-        console.log(dividend + ',' + divisor);
         const prevDivisor = divisor;
         divisor = dividend % divisor;
         dividend = prevDivisor;
