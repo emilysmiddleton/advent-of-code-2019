@@ -1,7 +1,6 @@
 import test from 'ava';
 import { getInSight, getBlockedCoordinates } from '../../src/day10/asteroids';
-import { createGrid } from '../../src/coordinates';
-import { getAsteroids, parseGrid } from '../../src/day10/parser';
+import { parseGrid } from '../../src/day10/parser';
 
 /**
  * B blocks A from the points marked X
@@ -13,9 +12,9 @@ import { getAsteroids, parseGrid } from '../../src/day10/parser';
  * .X.
  */
 test('blockers in straight vertical line', t => {
+    const grid = parseGrid(['.#.', '...', '.#.', '...', '...', '...']);
     const a = { x: 1, y: 0 };
     const b = { x: 1, y: 2 };
-    const grid = createGrid(3, 6);
     const result = getBlockedCoordinates(grid, a, b);
     t.deepEqual(result, [
         { x: 1, y: 3 },
@@ -33,9 +32,9 @@ test('blockers in straight vertical line', t => {
  * .......
  */
 test('blockers in straight horizonal line', t => {
+    const grid = parseGrid(['.......', '.#.#...', '.......']);
     const a = { x: 1, y: 1 };
     const b = { x: 3, y: 1 };
-    const grid = createGrid(7, 3);
     const result = getBlockedCoordinates(grid, a, b);
     t.deepEqual(result, [
         { x: 4, y: 1 },
@@ -52,9 +51,9 @@ test('blockers in straight horizonal line', t => {
  * ...X
  */
 test('blockers in diagonal line', t => {
+    const grid = parseGrid(['#...', '.#..', '....', '....']);
     const a = { x: 0, y: 0 };
     const b = { x: 1, y: 1 };
-    const grid = createGrid(4, 4);
     const result = getBlockedCoordinates(grid, a, b);
     t.deepEqual(result, [
         { x: 2, y: 2 },
@@ -70,9 +69,9 @@ test('blockers in diagonal line', t => {
  * ......X
  */
 test('blockers at other gradient', t => {
+    const grid = parseGrid(['#......', '..#....', '.......', '.......']);
     const a = { x: 0, y: 0 };
     const b = { x: 2, y: 1 };
-    const grid = createGrid(7, 4);
     const result = getBlockedCoordinates(grid, a, b);
     t.deepEqual(result, [
         { x: 4, y: 2 },
@@ -89,24 +88,21 @@ test('blockers at other gradient', t => {
  * ...87
  */
 test.only('count asteroids in sight', t => {
-    const asteroidGrid = parseGrid([
+    const grid = parseGrid([
         '.#..#',
         '.....',
         '#####',
         '....#',
         '...##'
     ]);
-    const grid = createGrid(5, 5);
-    // List of asteroids
-    const asteroids = getAsteroids(asteroidGrid, grid);
-    t.is(getInSight(grid, asteroids, asteroids[0]).length, 7);
-    t.is(getInSight(grid, asteroids, asteroids[1]).length, 7);
-    t.is(getInSight(grid, asteroids, asteroids[2]).length, 6);
-    t.is(getInSight(grid, asteroids, asteroids[3]).length, 7);
-    t.is(getInSight(grid, asteroids, asteroids[4]).length, 7);
-    t.is(getInSight(grid, asteroids, asteroids[5]).length, 7);
-    t.is(getInSight(grid, asteroids, asteroids[6]).length, 5);
-    t.is(getInSight(grid, asteroids, asteroids[7]).length, 7);
-    t.is(getInSight(grid, asteroids, asteroids[8]).length, 8);
-    t.is(getInSight(grid, asteroids, asteroids[9]).length, 7);
+    t.is(getInSight(grid, grid.asteroids[0]).length, 7);
+    t.is(getInSight(grid, grid.asteroids[1]).length, 7);
+    t.is(getInSight(grid, grid.asteroids[2]).length, 6);
+    t.is(getInSight(grid, grid.asteroids[3]).length, 7);
+    t.is(getInSight(grid, grid.asteroids[4]).length, 7);
+    t.is(getInSight(grid, grid.asteroids[5]).length, 7);
+    t.is(getInSight(grid, grid.asteroids[6]).length, 5);
+    t.is(getInSight(grid, grid.asteroids[7]).length, 7);
+    t.is(getInSight(grid, grid.asteroids[8]).length, 8);
+    t.is(getInSight(grid, grid.asteroids[9]).length, 7);
 });
