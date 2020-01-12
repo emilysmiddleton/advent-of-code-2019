@@ -1,6 +1,7 @@
 import test from 'ava';
 import { getInSight, getBlockedCoordinates } from '../../src/day10/asteroids';
 import { parseGrid } from '../../src/day10/parser';
+import { max } from '../../src/utils';
 
 /**
  * B blocks A from the points marked X
@@ -12,7 +13,14 @@ import { parseGrid } from '../../src/day10/parser';
  * .X.
  */
 test('blockers in straight vertical line', t => {
-    const grid = parseGrid(['.#.', '...', '.#.', '...', '...', '...']);
+    const grid = parseGrid([
+        '.#.',
+        '...',
+        '.#.',
+        '...',
+        '...',
+        '...'
+    ]);
     const a = { x: 1, y: 0 };
     const b = { x: 1, y: 2 };
     const result = getBlockedCoordinates(grid, a, b);
@@ -21,8 +29,6 @@ test('blockers in straight vertical line', t => {
         { x: 1, y: 4 },
         { x: 1, y: 5 }
     ], JSON.stringify(result));
-    // exact same object
-    t.is(result[0], grid[3][1]);
 });
 
 /**
@@ -87,7 +93,7 @@ test('blockers at other gradient', t => {
  * ....7
  * ...87
  */
-test.only('count asteroids in sight', t => {
+test('count asteroids in sight', t => {
     const grid = parseGrid([
         '.#..#',
         '.....',
@@ -105,4 +111,21 @@ test.only('count asteroids in sight', t => {
     t.is(getInSight(grid, grid.asteroids[7]).length, 7);
     t.is(getInSight(grid, grid.asteroids[8]).length, 8);
     t.is(getInSight(grid, grid.asteroids[9]).length, 7);
+});
+
+test.only('get smallest, example from site 1', t => {
+    const grid = parseGrid([
+        '......#.#.',
+        '#..#.#....',
+        '..#######.',
+        '.#.#.###..',
+        '.#..#.....',
+        '..#....#.#',
+        '#..#....#.',
+        '.##.#..###',
+        '##...#..#.',
+        '.#....####'
+    ]);
+    const counts = grid.asteroids.map(a => getInSight(grid, a).length);
+    t.is(counts.reduce(max), 33);
 });

@@ -2,6 +2,8 @@ export const sum = (accumulator, currentValue) => accumulator + currentValue;
 
 export const min = (accumulator, currentValue) => accumulator < currentValue ? accumulator : currentValue;
 
+export const max = (accumulator, currentValue) => accumulator > currentValue ? accumulator : currentValue;
+
 export function zip<T>(array1: T[], array2: T): T[][] {
     const result = [];
     for (let i = 0; i < array1.length; i++) {
