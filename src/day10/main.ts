@@ -1,7 +1,7 @@
 import * as Logger from 'bunyan';
 import { AsteroidGrid } from './types';
 import { parseGrid } from './parser';
-import { getInSight } from './asteroids';
+import { getInSight, getVaporiseOrder } from './asteroids';
 import { max } from '../utils';
 
 export function parse(rawInputs: string[], _log: Logger): AsteroidGrid {
@@ -13,10 +13,10 @@ export function run1(grid: AsteroidGrid, _log: Logger): number {
     return counts.reduce(max);
 }
 
-export function run2(input: string[], _log: Logger): string {
-    return input[0];
-
+export function run2(grid: AsteroidGrid, _log: Logger): number {
+    const toLaser = getVaporiseOrder(grid);
+    console.log(toLaser);
+    console.log(toLaser.length);
+    const result = toLaser[199];
+    return (result.x * 100) + result.y;
 }
-
-
-
