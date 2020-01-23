@@ -15,8 +15,6 @@ export function run1(grid: AsteroidGrid, _log: Logger): number {
 
 export function run2(grid: AsteroidGrid, _log: Logger): number {
     const toLaser = getVaporiseOrder(grid);
-    console.log(toLaser);
-    console.log(toLaser.length);
     const result = toLaser[199];
     return (result.x * 100) + result.y;
 }
