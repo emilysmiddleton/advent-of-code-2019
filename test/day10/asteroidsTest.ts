@@ -173,33 +173,33 @@ test('sort y=0, x<0', t => {
 
 test('sort x>0, y>0', t => {
     sortTest([
-        { x: 1, y: 2 },
+        { x: 2, y: 1 },
         { x: 2, y: 2 },
-        { x: 2, y: 1 }
+        { x: 1, y: 2 }
     ], t);
 });
 
 test('sort x>0, y<0', t => {
     sortTest([
-        { x: 2, y: -1 },
+        { x: 1, y: -2 },
         { x: 2, y: -2 },
-        { x: 1, y: -2 }
+        { x: 2, y: -1 }
     ], t);
 });
 
 test('sort x<0, y<0', t => {
     sortTest([
-        { x: -1, y: -2 },
+        { x: -2, y: -1 },
         { x: -2, y: -2 },
-        { x: -2, y: -1 }
+        { x: -1, y: -2 }
     ], t);
 });
 
 test('sort x<0, y>0', t => {
     sortTest([
-        { x: -2, y: 1 },
+        { x: -1, y: 2 },
         { x: -2, y: 2 },
-        { x: -1, y: 2 }
+        { x: -2, y: 1 }
     ], t);
 });
 
@@ -256,7 +256,6 @@ test('Vaporise order', t => {
         '..#.#.....#....##'
     ]);
     const toVaporise = getVaporiseOrder(grid);
-    t.log(toVaporise);
     t.deepEqual(toVaporise, [
         { x: 8, y: 1 },
         { x: 9, y: 0 },

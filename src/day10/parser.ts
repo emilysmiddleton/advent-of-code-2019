@@ -1,16 +1,11 @@
 import { AsteroidGrid } from './types';
 import { Coordinate, CoordinatesGrid, createGrid } from '../coordinates';
 
-export function parseRow(line: string): boolean[] {
-    return line.split('').map(value => value === '#');
-}
-
 export function parseGrid(input: string[]): AsteroidGrid {
-    const asteroidGrid = input.map(parseRow);
-    const height = asteroidGrid.length;
-    const width = asteroidGrid[0].length;
+    const height = input.length;
+    const width = input[0].length;
     const coordinates = createGrid(width, height);
-    const asteroids = getAsteroids(asteroidGrid, coordinates);
+    const asteroids = getAsteroids(input, coordinates);
     return {
         height,
         width,
@@ -19,11 +14,12 @@ export function parseGrid(input: string[]): AsteroidGrid {
     };
 }
 
-export function getAsteroids(asteroidGrid: boolean[][], coordinates: CoordinatesGrid): Coordinate[] {
+export function getAsteroids(input: string[], coordinates: CoordinatesGrid): Coordinate[] {
     const asteroids = [];
-    for (let y = 0; y < asteroidGrid.length; y++) {
-        for (let x = 0; x < asteroidGrid[y].length; x++) {
-            if (asteroidGrid[y][x]) {
+    for (let y = 0; y < input.length; y++) {
+        const split = input[y].split('');
+        for (let x = 0; x < split.length; x++) {
+            if (split[x] === '#') {
                 asteroids.push(coordinates[y][x]);
             }
         }

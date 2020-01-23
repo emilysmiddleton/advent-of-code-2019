@@ -4,13 +4,14 @@ See [part 1 and 2](problem.md), or [the original online](https://adventofcode.co
 
 ## Data Modelling
 
-We used a grid - an array of arrays - in day 8; we'll do the same here.
-To simplify later code, we can make this an array of booleans:
-true if that spot contains an asteroid, false otherwise.
+We can use the coordinate object we introduced on day 3.
+We don't need to keep track of the whole grid, just a list of coordinates where there is
+an asteroid.
 
 ## Parsing the input
 
-For each line, use `split` to turn into an array and then map each character to a boolean.
+For each line, use `split` to turn into an array, and create a coordinate 
+for each point there is a `#`.
 
 ## Part 1
 
@@ -62,3 +63,48 @@ So for the first example:
 - A is `(1, 0)`, B is `(3, 1)`
 - Gradient is `(2, 1)`
 - Points blocked are `(3, 1) + (2, 1) = (5, 2)`, `(5, 2) + (2, 1) = (7, 3)`, etc.
+
+## Part 2
+
+We already have code to find out where the station will be, and all 
+asteroids in sight from that point.
+To find the coordinate vaporised 200th, we'll need to sort them.
+
+### JavaScript sort
+
+JavaScript has an array method `sort` which takes a function comparing two objects.
+
+When comparing (a, b)
+- return a negative number if `a` should come first
+- return 0 if the numbers are equal
+- return a positive number if `b` should come first
+
+I always have to think about which way round this is! The best 
+way I've found to remember is it to remember you can sort numbers with
+`a - b` (so when a comes before b the result is negative).
+
+### Clockwise sorting
+
+First I adjusted all the coordinates so that the base (X below) was (0,0),
+and all other coordinates in relation to that.
+
+I then categorised coordinates into 8 'zones'.
+
+```
+777701111
+777701111
+777701111
+777701111
+6666X2222
+555543333
+555543333
+555543333
+555543333
+```
+
+For coordinates in different zonea, return `zone a - zone b`.
+
+Within the same zone:
+- For the verticals (0, 4) compare the y coordinates
+- For the horizontals (2, 6) compare the x coordinates
+- For the diagonals (1, 3, 5, 7) compare the gradient of `x/y`.

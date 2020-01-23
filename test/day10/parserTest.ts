@@ -1,10 +1,5 @@
 import test from 'ava';
-import { parseGrid, parseRow } from '../../src/day10/parser';
-
-test('parse line to boolean array', t => {
-    const line = '.#..#';
-    t.deepEqual(parseRow(line), [false, true, false, false, true]);
-});
+import { parseGrid } from '../../src/day10/parser';
 
 test('parse input to asteroid grid', t => {
     const input = [
