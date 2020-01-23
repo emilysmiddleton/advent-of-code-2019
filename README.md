@@ -12,4 +12,5 @@ This repository contains my solutions to the 2019 challenge. I've tried to write
 * [Day 4](src/day4/day4.md)
 * [Day 6](src/day6/day6.md)
 * [Day 8](src/day8/day8.md)
+* [Day 10](src/day10/day10.md)
 * [Day 22](src/day22/day22.md)
