@@ -102,7 +102,7 @@ I then categorised coordinates into 8 'zones'.
 555543333
 ```
 
-For coordinates in different zonea, return `zone a - zone b`.
+For coordinates in different zone, return `zone a - zone b`.
 
 Within the same zone:
 - For the verticals (0, 4) compare the y coordinates

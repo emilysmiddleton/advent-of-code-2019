@@ -3,6 +3,12 @@ export type Coordinate = {
     y: number
 };
 
+export type Coordinate3D = {
+    x: number,
+    y: number,
+    z: number
+};
+
 export type CoordinatesGrid = Coordinate[][];
 
 export function createGrid(width: number, height: number): CoordinatesGrid {
