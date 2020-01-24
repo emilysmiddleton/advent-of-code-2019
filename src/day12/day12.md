@@ -66,3 +66,5 @@ export function applyGravity(moon1: Moon, moon2: Moon, axis: string): void {
 ```
 
 This avoids us having to write the same code for all three axes.
+
+### Apply velocity
