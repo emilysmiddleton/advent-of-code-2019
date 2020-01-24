@@ -67,4 +67,23 @@ export function applyGravity(moon1: Moon, moon2: Moon, axis: string): void {
 
 This avoids us having to write the same code for all three axes.
 
+To apply to all moons, we'll have to loop over each pair.
+
 ### Apply velocity
+
+For each access add the velocity to the position:
+```
+moon.position.x += moon.velocity.x
+```
+
+### Calculate energy
+
+For each moon we can calculate the total energy.= in isolation.
+- potential energy is the sum of position's x, y, z
+- kinetic energy is the sum of velocity's x, y, z
+- total energy is potential * kinetic
+
+To get the energy for the whole system calculate it for all moons using 
+`Array.map` then sum using `reduce`.
+
+

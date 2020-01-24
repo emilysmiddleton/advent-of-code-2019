@@ -2,9 +2,7 @@ import { Moon } from './types';
 
 export function parseMoon(name: string, line: string): Moon {
     const regex = /<x=(-?\d+), y=(-?\d+), z=(-?\d+)>/;
-    console.log(line);
     const found = line.match(regex);
-    console.log(found);
     return {
         name,
         position: {

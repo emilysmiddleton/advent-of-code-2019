@@ -1,6 +1,12 @@
 import test from 'ava';
 import { parseMoon, parseMoons } from '../../src/day12/parser';
-import { applyGravity, applyGravityToAll, applyVelocity, applyVelocityToAll } from '../../src/day12/moon';
+import {
+    applyGravity,
+    applyGravityToAll,
+    applyVelocity,
+    applyVelocityToAll, kineticEnergy,
+    potentialEnergy, totalEnergy
+} from '../../src/day12/moon';
 
 test('Apply gravity first moon lower x', t => {
     const moon1 = parseMoon('Ganymede', '<x=12, y=10, z=8>');
@@ -45,4 +51,27 @@ test('Update', t => {
     t.deepEqual(moons[1].position, { x: 3, y: -7, z: -4 });
     t.deepEqual(moons[2].position, { x: 1, y: -7, z: 5 });
     t.deepEqual(moons[3].position, { x: 2, y: 2, z: 0 });
+});
+
+test('potential energy', t => {
+    const moon = parseMoon('Io', '<x=2, y=-10, z=-7>');
+    t.is(potentialEnergy(moon), 19);
+});
+
+test('kinetic energy', t => {
+    const moon = {
+        name: 'Io',
+        position: { x: 0, y: 0, z: 0 },
+        velocity: { x: 2, y: -10, z: -7 }
+    };
+    t.is(kineticEnergy(moon), 19);
+});
+
+test('total energy', t => {
+    const moon = {
+        name: 'Io',
+        position: { x: -4, y: 5, z: 2 },
+        velocity: { x: 2, y: -10, z: -7 }
+    };
+    t.is(totalEnergy(moon), 209);
 });
