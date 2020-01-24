@@ -1,4 +1,5 @@
 import { Moon } from './types';
+import { sum } from '../utils';
 
 const axes = ['x', 'y', 'z'];
 
@@ -35,4 +36,25 @@ export function applyGravityToAll(moons: Moon[]): void {
 
 export function applyVelocityToAll(moons: Moon[]): void {
     moons.forEach(applyVelocity);
+}
+
+/**
+ * The total energy for a single moon is its potential energy multiplied by its kinetic energy.
+ */
+export function totalEnergy(moon: Moon): number {
+    return potentialEnergy(moon) * kineticEnergy(moon);
+}
+
+/**
+ * A moon's potential energy is the sum of the absolute values of its x, y, and z position coordinates.
+ */
+export function potentialEnergy(moon: Moon): number {
+    return axes.map(axis => Math.abs(moon.position[axis])).reduce(sum);
+}
+
+/**
+ * A moon's kinetic energy is the sum of the absolute values of its velocity coordinates.
+ */
+export function kineticEnergy(moon: Moon): number {
+    return axes.map(axis => Math.abs(moon.velocity[axis])).reduce(sum);
 }
