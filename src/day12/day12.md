@@ -51,3 +51,18 @@ The result will be an array, e.g. for the example above we'd get:
 This has the whole match at position 0, then each group (bracketed) match. We can then 
 convert these to numbers and build our `Moon` object.
 
+## Part 1
+
+### Apply gravity
+
+For a pair of moons, we check their relative positions and adjust the velocity accordingly.
+One of the nice things about JavaScript is that we write a single method
+that adjusts the velocity for a given axis, and pass the axis in as a parameter.
+
+```
+export function applyGravity(moon1: Moon, moon2: Moon, axis: string): void {
+    const value1 = moon1.position[axis];
+    ...
+```
+
+This avoids us having to write the same code for all three axes.
