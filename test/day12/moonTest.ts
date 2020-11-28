@@ -2,8 +2,7 @@ import test from 'ava';
 import { parseMoon, parseMoons } from '../../src/day12/parser';
 import {
     applyGravity,
-    applyGravityToAll,
-    applyVelocity,
+    applyGravityToAll, applyVelocityForAxis,
     applyVelocityToAll, kineticEnergy,
     potentialEnergy, totalEnergy
 } from '../../src/day12/moon';
@@ -30,8 +29,8 @@ test('Apply velocity', t => {
         position: { x: 1, y: 2, z: 3 },
         velocity: { x: -3, y: 4, z: 0 }
     };
-    applyVelocity(moon);
-    t.deepEqual(moon.position, { x: -2, y: 6, z: 3 });
+    applyVelocityForAxis(moon, 'x');
+    t.deepEqual(moon.position, { x: -2, y: 2, z: 3 });
 });
 
 test('Update', t => {

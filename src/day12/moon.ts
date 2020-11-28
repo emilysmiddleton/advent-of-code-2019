@@ -16,26 +16,34 @@ export function applyGravity(moon1: Moon, moon2: Moon, axis: string): void {
     }
 }
 
+export function applyGravityForAxis(moons: Moon[], axis: string): void {
+    for (let i = 0; i < moons.length; i++) {
+        for (let j = i + 1; j < moons.length; j++) {
+            applyGravity(moons[i], moons[j], axis);
+        }
+    }
+}
+
+export function applyGravityToAll(moons: Moon[]): void {
+    axes.forEach(axis => applyGravityForAxis(moons, axis));
+}
+
 /**
  * simply add the velocity of each moon to its own position.
  * For example, if Europa has a position of x=1, y=2, z=3 and a velocity of x=-2, y=0,z=3,
  * then its new position would be x=-1, y=2, z=6.
  * This process does not modify the velocity of any moon.
  */
-export function applyVelocity(moon: Moon): void {
-    axes.forEach(axis => moon.position[axis] += moon.velocity[axis]);
+export function applyVelocityForAxis(moon: Moon, axis: string): void {
+    moon.position[axis] += moon.velocity[axis];
 }
 
-export function applyGravityToAll(moons: Moon[]): void {
-    for (let i = 0; i < moons.length; i++) {
-        for (let j = i + 1; j < moons.length; j++) {
-            axes.forEach(axis => applyGravity(moons[i], moons[j], axis));
-        }
-    }
+export function applyVelocityForAxisToAll(moons: Moon[], axis: string): void {
+    moons.forEach(moon => applyVelocityForAxis(moon, axis));
 }
 
 export function applyVelocityToAll(moons: Moon[]): void {
-    moons.forEach(applyVelocity);
+    axes.forEach(axis => applyVelocityForAxisToAll(moons, axis));
 }
 
 /**
