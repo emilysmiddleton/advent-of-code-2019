@@ -13,7 +13,6 @@ export class Code1 implements Code {
         const a = reg.read(index + 1, false);
         const b = reg.read(index + 2, false);
         const result = a + b;
-        console.log(`${a} + ${b} = ${result}`);
         reg.write(index + 3, result);
         return index + 4;
     }
@@ -28,7 +27,6 @@ export class Code2 implements Code {
         const a = reg.read(index + 1, false);
         const b = reg.read(index + 2, false);
         const result = a * b;
-        console.log(`${a} * ${b} = ${result}`);
         reg.write(index + 3, result);
         return index + 4;
     }

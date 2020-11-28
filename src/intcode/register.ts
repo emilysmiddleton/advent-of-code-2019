@@ -5,11 +5,9 @@ export class Register {
         this.values.push(...start);
     }
 
-
-
     /**
      * Reads that value at the given index.
-     * If raw is true, reeturn that, else
+     * If raw is true, return that, else
      * treat that as a further pointer.
      */
     public read(index: number, raw: boolean): number {
@@ -19,11 +17,7 @@ export class Register {
 
     public write(index: number, value: number): void {
         const pointer = this.values[index];
-        console.log(`writing ${value} at ${pointer}`);
         this.values[pointer] = value;
     }
 
-    public print(): void {
-        console.log(this.values.join(','));
-    }
 }
