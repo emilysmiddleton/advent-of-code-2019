@@ -22,13 +22,13 @@
   "homepage": "https://github.com/emilysmiddleton/advent-of-code-2019#readme",
   "devDependencies": {
     "@types/bunyan": "^1.8.4",
-    "@types/node": "^8.10.38",
+    "@types/node": "^8.10.66",
     "ava": "^2.4.0",
-    "typescript": "^3.4.5"
+    "typescript": "^3.9.7"
   },
   "dependencies": {
-    "bignumber.js": "^9.0.0",
-    "bunyan": "^1.8.12",
+    "bignumber.js": "^9.0.1",
+    "bunyan": "^1.8.14",
     "tslint": "^5.20.1",
     "tslint-eslint-rules": "^5.4.0"
   }
