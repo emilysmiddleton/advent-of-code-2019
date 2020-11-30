@@ -1,5 +1,5 @@
 import { Register } from './register';
-import { Code, Code1, Code2, Code3, Code4, Code99 } from './codes';
+import { Code, Code1, Code2, Code3, Code4, Code5, Code6, Code7, Code8, Code99 } from './codes';
 import * as fs from 'fs';
 
 export function runProgram(reg: Register, fixed?: number): void {
@@ -17,8 +17,7 @@ export function runProgram(reg: Register, fixed?: number): void {
             } else {
                 fs.appendFileSync(`output/run_${timestamp}.txt`, index + ' ' + opCode + '\n');
                 const code = getCode(fixed || -1, opCode);
-                code.apply(reg, index);
-                index += code.getTotalParameters() + 1;
+                index = code.apply(reg, index);
             }
         }
     }
@@ -49,6 +48,14 @@ function getBaseCode(input: number, opCode: string): Code {
             return new Code3(input);
         case '04':
             return new Code4();
+        case '05':
+            return new Code5();
+        case '06':
+            return new Code6();
+        case '07':
+            return new Code7();
+        case '08':
+            return new Code8();
         case '99':
             return new Code99();
         default:
