@@ -33,7 +33,7 @@ test('Day 2 - 1,1,1,4,99,5,6,0,99', t => {
 test('Day 5 - 3,0,4,0,99', t => {
     const input = [3, 0, 4, 0, 99];
     const reg = new Register(input);
-    runProgram(reg, 143);
+    runProgram(reg, [143]);
     t.is(reg.serialise(), '{"v0":143,"v1":0,"v2":4,"v3":0,"v4":99}');
     t.is(reg.getOutput(), 143);
 });
@@ -41,6 +41,6 @@ test('Day 5 - 3,0,4,0,99', t => {
 test('Day 5 - 1101,100,-1,4,0', t => {
     const input = [1101, 100, -1, 4, 0];
     const reg = new Register(input);
-    runProgram(reg, 143);
+    runProgram(reg, [143]);
     t.is(reg.serialise(), '{"v0":1101,"v1":100,"v2":-1,"v3":4,"v4":99}');
 });

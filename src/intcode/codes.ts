@@ -68,9 +68,9 @@ export class Code2 implements Code {
 
 export class Code3 implements Code {
 
-    private input: number;
-    constructor(input: number) {
-        this.input = input;
+    private inputs: number[];
+    constructor(inputs: number[]) {
+        this.inputs = inputs;
     }
 
     /**
@@ -81,7 +81,9 @@ export class Code3 implements Code {
      */
     public apply(reg: Register, index: number): number {
         const a = reg.read(index + 1, 'Immediate');
-        reg.write(a, this.input);
+        const input = this.inputs[0];
+        this.inputs = this.inputs.slice(1);
+        reg.write(a, input);
         return index + 2;
     }
 

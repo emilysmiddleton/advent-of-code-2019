@@ -8,13 +8,13 @@ export function parse(rawInputs: string[], _log: Logger): number[] {
 
 export function run1(input: number[], _log: Logger): number {
     const reg = new Register(input);
-    runProgram(reg, 1);
+    runProgram(reg, [1]);
     return reg.getOutput();
 }
 
 export function run2(input: number[], _log: Logger): number {
     const reg = new Register(input);
-    runProgram(reg, 5);
+    runProgram(reg, [5]);
     return reg.getOutput();
 }
 

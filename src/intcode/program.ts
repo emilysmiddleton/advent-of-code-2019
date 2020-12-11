@@ -2,7 +2,7 @@ import { Register } from './register';
 import { Code, Code1, Code2, Code3, Code4, Code5, Code6, Code7, Code8, Code99 } from './codes';
 import * as fs from 'fs';
 
-export function runProgram(reg: Register, fixed?: number): void {
+export function runProgram(reg: Register, inputs?: number[]): void {
     const timestamp = new Date().toISOString();
     let index = 0;
     while (index >= 0) {
@@ -16,7 +16,7 @@ export function runProgram(reg: Register, fixed?: number): void {
                 index = -1;
             } else {
                 fs.appendFileSync(`output/run_${timestamp}.txt`, index + ' ' + opCode + '\n');
-                const code = getCode(fixed || -1, opCode);
+                const code = getCode(inputs || [], opCode);
                 index = code.apply(reg, index);
             }
         }
@@ -24,9 +24,9 @@ export function runProgram(reg: Register, fixed?: number): void {
     fs.appendFileSync(`output/run_${timestamp}.txt`, reg.serialise() + '\n');
 }
 
-export function getCode(input: number, opCode: number): Code {
+export function getCode(inputs: number[], opCode: number): Code {
     const asString = '0'.repeat(10) + opCode.toString(10);
-    const baseCode = getBaseCode(input, asString.slice(-2));
+    const baseCode = getBaseCode(inputs, asString.slice(-2));
     const modes =
         asString.substring(asString.length - 2 - baseCode.getReadParameters(), asString.length - 2)
             .split('')
@@ -38,14 +38,14 @@ export function getCode(input: number, opCode: number): Code {
 
 export
 
-function getBaseCode(input: number, opCode: string): Code {
+function getBaseCode(inputs: number[], opCode: string): Code {
     switch (opCode) {
         case '01':
             return new Code1();
         case '02':
             return new Code2();
         case '03':
-            return new Code3(input);
+            return new Code3(inputs);
         case '04':
             return new Code4();
         case '05':
